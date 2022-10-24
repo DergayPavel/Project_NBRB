@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB</title>
+    <link rel="stylesheet" href="ex.css">
+    <link rel="stylesheet" href="Chart.min.css">
+    <script src="Chart.min.js"></script>
+</head>
+<body>
+    <div class="infoBox" id="infoBox">
+        <select name="currency" id="currency"></select>
+        <input type="date" name="dateFrom" id="dateFrom">
+        <input type="date" name="dateTo" id="dateTo">
+        <button>Выполнить</button>
+    </div>
+    <span class="currSpan" id="currSpan"></span>
+    <div class="graph"></div>
+    <canvas id="myChart"></canvas>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="graph.js"></script>
+    <script src="featch.js"></script>
+    <script src="logic.js"></script>
+</body>
+</html>

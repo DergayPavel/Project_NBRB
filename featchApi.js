@@ -106,7 +106,7 @@ async function addSpan(link){
 function getLinks(info, id, start,end){
     let links=[];
     if(start==end && start!=''){
-        myChart.style.display='none';
+        chart_div.style.display='none';
         currSpan.style.display='flex';
         console.log('https://www.nbrb.by/api/exrates/rates/'+id[0]+'?ondate='+start)
         addSpan('https://www.nbrb.by/api/exrates/rates/'+id[0]+'?ondate='+start);
@@ -114,7 +114,7 @@ function getLinks(info, id, start,end){
 
     }
     else{
-        myChart.style.display='flex';
+        chart_div.style.display='flex';
         currSpan.style.display='none';
         let startDate=start;
         let startYear=Number(start.substring(0,4));
@@ -159,7 +159,7 @@ async function getDateLinks(links){
             console.log('i: '+i)
     }
     if(i===links.length){
-        console.log('loh');
+        getChart(arrDate);
         return arrDate
     }
 }
@@ -169,7 +169,7 @@ function parse2(elem){
         arrDate.push(elem[i].Date)
         arrDate.push(elem[i].Cur_OfficialRate)
     }
-    return arrDate
+    return arrDate;
 }
 
 function main(){
@@ -177,7 +177,7 @@ function main(){
     let end=timeTo();
     console.log('start: ',start,'end: ',end);
     if(start>end){ 
-        myChart.style.display='none';
+        chart_div.style.display='none';
         currSpan.style.display='flex';
         currSpan.innerHTML='неверна дата';
         return;
@@ -193,11 +193,8 @@ function main(){
     console.log('links fo featch: ', [dateLinks]);
     if(start<end){
         getDateLinks(dateLinks);
-        let dateChart=arrDate;
-        console.log('dateChart: '+dateChart)
-        setTimeout(()=>{getChart(dateChart)},10000);
     }
-    
+    return;
 }
 
 function getChart(dateChart){
